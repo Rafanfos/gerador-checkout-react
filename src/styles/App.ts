@@ -1,6 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const AppRoot = styled.div`
   height: 100vh;
   max-width: 1440px;
+  background-color: var(--background-primary);
 `;
