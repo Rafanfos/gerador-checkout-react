@@ -29,9 +29,9 @@ export const Global = createGlobalStyle`
 }
 
 
-
 ul,ol,li{
     list-style: none;
+    
 }
 
 
