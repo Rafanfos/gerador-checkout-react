@@ -6,6 +6,7 @@ export const StyledPage = styled.div`
   align-items: center;
   gap: 20px;
   width: 90%;
+  padding: 20px;
 
   h1 {
     font-size: 28px;

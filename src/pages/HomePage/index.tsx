@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState, ChangeEvent } from "react";
 import { StyledPage } from "./style";
 import { motion, AnimatePresence } from "framer-motion";
+import CurrentDate from "../../components/Date";
 
 interface IData {
   dev?: string;
@@ -45,6 +46,7 @@ const HomePage = () => {
 
   return (
     <StyledPage>
+      <CurrentDate />
       <motion.div
         animate={{ y: [-400, 0] }}
         transition={{ ease: "easeOut", duration: 2 }}
