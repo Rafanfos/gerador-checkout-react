@@ -1,19 +1,16 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, useContext } from "react";
 import { StyledPage } from "./style";
 import { motion, AnimatePresence } from "framer-motion";
-import CurrentDate from "../../components/Date";
-
-interface IData {
-  dev?: string;
-  obs?: string;
-  service: string;
-}
+import CurrentDate from "../../components/CurrentDate";
+import ServicesList from "../../components/ServicesList";
+import { Context, IServiceData } from "../../context";
 
 const HomePage = () => {
-  const [serviceType, setServiceType] = useState<null | string>(null);
+  const { serviceType, setServiceType, activity, currentDate, saveData } =
+    useContext(Context);
 
   const formSchema =
     serviceType !== "Contato com Dev"
@@ -32,13 +29,9 @@ const HomePage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IData>({
+  } = useForm<IServiceData>({
     resolver: yupResolver(formSchema),
   });
-
-  const saveData = (event: IData) => {
-    console.log(event);
-  };
 
   const changeType = (e: ChangeEvent<HTMLSelectElement>) => {
     setServiceType(e?.target.value);
@@ -46,8 +39,9 @@ const HomePage = () => {
 
   return (
     <StyledPage>
-      <CurrentDate />
+      <CurrentDate currentDate={currentDate} />
       <motion.div
+        className="effect-div"
         animate={{ y: [-400, 0] }}
         transition={{ ease: "easeOut", duration: 2 }}
       >
@@ -111,6 +105,9 @@ const HomePage = () => {
           </AnimatePresence>
         </form>
       </motion.div>
+      <>
+        <ServicesList activity={activity} />
+      </>
     </StyledPage>
   );
 };

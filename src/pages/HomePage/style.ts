@@ -5,22 +5,29 @@ export const StyledPage = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  width: 90%;
-  padding: 20px;
+  width: 100%;
+  padding: 5px;
+  height: 100%;
 
   h1 {
     font-size: 28px;
+    text-align: center;
+  }
+
+  .effect-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   form {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     padding: 20px;
     background-color: #ffffff;
-    width: 100%;
+    width: 90%;
     border-radius: 8px;
     color: var(--color-grey-2);
   }
@@ -63,6 +70,12 @@ export const StyledPage = styled.div`
     width: 100px;
     padding: 10px;
     color: #ffffff;
+  }
+
+  button:hover {
+    background-color: var(--color-primary-light);
+    transition: 0.5s;
+    scale: 1.2;
   }
 
   .alert {
