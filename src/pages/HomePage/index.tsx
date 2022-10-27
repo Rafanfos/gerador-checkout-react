@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import CurrentDate from "../../components/CurrentDate";
 import ServicesList from "../../components/ServicesList";
 import { Context, IServiceData } from "../../context";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { serviceType, setServiceType, saveData } = useContext(Context);
@@ -104,9 +105,15 @@ const HomePage = () => {
           </AnimatePresence>
         </form>
       </motion.div>
-      <>
-        <ServicesList />
-      </>
+      <ServicesList />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "easeOut", duration: 3 }}
+        exit={{ opacity: 0 }}
+      >
+        <Link to={"/checkout"}>Gerar código</Link>
+      </motion.div>
     </StyledPage>
   );
 };

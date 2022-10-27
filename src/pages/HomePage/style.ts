@@ -6,7 +6,6 @@ export const StyledPage = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
-  padding: 5px;
   height: 100%;
 
   h1 {
@@ -64,7 +63,8 @@ export const StyledPage = styled.div`
     border: 1px solid var(--color-grey-1);
   }
 
-  button {
+  button,
+  a {
     background-color: var(--color-primary);
     border-radius: 20px;
     width: 100px;
@@ -72,10 +72,18 @@ export const StyledPage = styled.div`
     color: #ffffff;
   }
 
-  button:hover {
+  button:hover,
+  a:hover {
     background-color: var(--color-primary-light);
     transition: 0.5s;
     scale: 1.2;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
   }
 
   .alert {

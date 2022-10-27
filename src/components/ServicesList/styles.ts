@@ -4,19 +4,18 @@ export const StyleActivity = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 90%;
-  height: 90%;
+  width: 100%;
   align-items: center;
 
   ul {
     display: flex;
-    gap: 25px;
+    gap: 40px;
     align-items: center;
     border-radius: 8px;
-    max-height: 60%;
+    /* height: 150px; */
     max-width: 95%;
     overflow: auto;
-    padding: 20px;
+    padding: 20px 30px;
   }
 
   li {
@@ -24,7 +23,7 @@ export const StyleActivity = styled.div`
     gap: 20px;
     align-items: center;
     justify-content: space-between;
-    min-width: 100%;
+    min-width: 98%;
     border-radius: 8px;
     border: solid var(--grey-0);
     padding: 10px;
@@ -44,10 +43,11 @@ export const StyleActivity = styled.div`
 
   @media (min-width: 728px) {
     ul {
-      min-height: 200px;
-      max-height: 400px;
+      /* height: 300px; */
       width: 400px;
       flex-direction: column;
+      padding: 30px;
+      gap: 10px;
     }
     li {
       min-height: 100px;
