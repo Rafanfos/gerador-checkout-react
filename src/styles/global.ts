@@ -46,17 +46,10 @@ a{
 }
 
 body{
-    height:100vh;
-    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-@media (min-width: 728px) {
-    body{
-    height:100%;
-    }
-}
 
 #root{
     height:100%;
