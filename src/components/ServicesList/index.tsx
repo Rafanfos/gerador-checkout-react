@@ -1,24 +1,40 @@
-import { IServiceData } from "../../context";
+import { Context } from "../../context";
 import { StyleActivity } from "./styles";
 import remove from "../../assets/remove.png";
+import { useContext } from "react";
 
-export interface IServiceListProps {
-  activity: IServiceData[];
-}
+import { motion, AnimatePresence } from "framer-motion";
 
-const ServicesList = ({ activity }: IServiceListProps) => {
+const ServicesList = () => {
+  const { activity, setActivity } = useContext(Context);
+
+  const removeItem = (itemId: string) => {
+    setActivity(activity.filter(({ id }) => id !== itemId));
+  };
+
   return (
     <StyleActivity>
-      {activity.map(({ dev, obs, service }: IServiceData) => {
-        return (
-          <li>
-            <h4>{dev}</h4>
-            <span>{obs ? obs : "N/A"}</span>
-            <span>{service}</span>
-            <img src={remove} alt="remove" />
-          </li>
-        );
-      })}
+      <ul>
+        <AnimatePresence>
+          {activity.map(({ dev, obs, service, id }) => {
+            return (
+              <motion.li
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, x: [-500, 0] }}
+                transition={{ ease: "easeOut", duration: 3 }}
+                exit={{ opacity: 0, x: [0, -500] }}
+                id={id}
+                key={id}
+              >
+                <h4>{dev}</h4>
+                <span>{obs ? obs : "N/A"}</span>
+                <span>{service}</span>
+                <img src={remove} alt="remove" onClick={() => removeItem(id)} />
+              </motion.li>
+            );
+          })}
+        </AnimatePresence>
+      </ul>
     </StyleActivity>
   );
 };

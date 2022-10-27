@@ -1,8 +1,9 @@
-interface ICurrentDateProps {
-  currentDate: string;
-}
+import { useContext } from "react";
+import { Context } from "../../context";
 
-const CurrentDate = ({ currentDate }: ICurrentDateProps) => {
+const CurrentDate = () => {
+  const { currentDate } = useContext(Context);
+
   return <span className="date">Hoje: {currentDate}</span>;
 };
 

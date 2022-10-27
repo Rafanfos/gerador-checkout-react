@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
-export const StyleActivity = styled.ul`
+export const StyleActivity = styled.div`
   display: flex;
-  /* flex-direction: column; */
-  gap: 25px;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  height: 90%;
   align-items: center;
-  border-radius: 8px;
-  max-height: 60%;
-  max-width: 95%;
-  overflow: auto;
-  padding: 20px;
+
+  ul {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    border-radius: 8px;
+    max-height: 60%;
+    max-width: 95%;
+    overflow: auto;
+    padding: 20px;
+  }
 
   li {
     display: flex;
@@ -30,14 +38,17 @@ export const StyleActivity = styled.ul`
   img {
     width: 20px;
     height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
   }
 
   @media (min-width: 728px) {
-    min-height: 200px;
-    max-height: 400px;
-    width: 400px;
-    flex-direction: column;
-
+    ul {
+      min-height: 200px;
+      max-height: 400px;
+      width: 400px;
+      flex-direction: column;
+    }
     li {
       min-height: 100px;
     }

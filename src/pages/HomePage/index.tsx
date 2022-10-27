@@ -9,8 +9,7 @@ import ServicesList from "../../components/ServicesList";
 import { Context, IServiceData } from "../../context";
 
 const HomePage = () => {
-  const { serviceType, setServiceType, activity, currentDate, saveData } =
-    useContext(Context);
+  const { serviceType, setServiceType, saveData } = useContext(Context);
 
   const formSchema =
     serviceType !== "Contato com Dev"
@@ -39,11 +38,11 @@ const HomePage = () => {
 
   return (
     <StyledPage>
-      <CurrentDate currentDate={currentDate} />
+      <CurrentDate />
       <motion.div
         className="effect-div"
         animate={{ y: [-400, 0] }}
-        transition={{ ease: "easeOut", duration: 2 }}
+        transition={{ ease: "easeOut", duration: 1.5 }}
       >
         <form onSubmit={handleSubmit(saveData)}>
           <h1>Gerador de checkout</h1>
@@ -66,13 +65,13 @@ const HomePage = () => {
                 className="inputs"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, y: [-30, 0] }}
-                transition={{ ease: "easeOut", duration: 2 }}
+                transition={{ ease: "easeOut", duration: 1.5 }}
                 exit={{ opacity: 0, y: [0, -30] }}
               >
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, y: [-30, 0] }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  transition={{ ease: "easeOut", duration: 1.5 }}
                   exit={{ opacity: 0, y: [0, -30] }}
                   className="label-input"
                 >
@@ -87,7 +86,7 @@ const HomePage = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, y: [-30, 0] }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  transition={{ ease: "easeOut", duration: 1.5 }}
                   exit={{ opacity: 0, y: [0, -30] }}
                   className="label-input"
                 >
@@ -106,7 +105,7 @@ const HomePage = () => {
         </form>
       </motion.div>
       <>
-        <ServicesList activity={activity} />
+        <ServicesList />
       </>
     </StyledPage>
   );
