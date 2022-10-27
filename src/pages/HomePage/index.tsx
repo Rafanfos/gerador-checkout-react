@@ -1,19 +1,15 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, useContext } from "react";
 import { StyledPage } from "./style";
 import { motion, AnimatePresence } from "framer-motion";
-import CurrentDate from "../../components/Date";
-
-interface IData {
-  dev?: string;
-  obs?: string;
-  service: string;
-}
+import CurrentDate from "../../components/CurrentDate";
+import ServicesList from "../../components/ServicesList";
+import { Context, IServiceData } from "../../context";
 
 const HomePage = () => {
-  const [serviceType, setServiceType] = useState<null | string>(null);
+  const { serviceType, setServiceType, saveData } = useContext(Context);
 
   const formSchema =
     serviceType !== "Contato com Dev"
@@ -32,13 +28,9 @@ const HomePage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IData>({
+  } = useForm<IServiceData>({
     resolver: yupResolver(formSchema),
   });
-
-  const saveData = (event: IData) => {
-    console.log(event);
-  };
 
   const changeType = (e: ChangeEvent<HTMLSelectElement>) => {
     setServiceType(e?.target.value);
@@ -48,8 +40,9 @@ const HomePage = () => {
     <StyledPage>
       <CurrentDate />
       <motion.div
+        className="effect-div"
         animate={{ y: [-400, 0] }}
-        transition={{ ease: "easeOut", duration: 2 }}
+        transition={{ ease: "easeOut", duration: 1.5 }}
       >
         <form onSubmit={handleSubmit(saveData)}>
           <h1>Gerador de checkout</h1>
@@ -72,13 +65,13 @@ const HomePage = () => {
                 className="inputs"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, y: [-30, 0] }}
-                transition={{ ease: "easeOut", duration: 2 }}
+                transition={{ ease: "easeOut", duration: 1.5 }}
                 exit={{ opacity: 0, y: [0, -30] }}
               >
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, y: [-30, 0] }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  transition={{ ease: "easeOut", duration: 1.5 }}
                   exit={{ opacity: 0, y: [0, -30] }}
                   className="label-input"
                 >
@@ -93,7 +86,7 @@ const HomePage = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, y: [-30, 0] }}
-                  transition={{ ease: "easeOut", duration: 2 }}
+                  transition={{ ease: "easeOut", duration: 1.5 }}
                   exit={{ opacity: 0, y: [0, -30] }}
                   className="label-input"
                 >
@@ -111,6 +104,9 @@ const HomePage = () => {
           </AnimatePresence>
         </form>
       </motion.div>
+      <>
+        <ServicesList />
+      </>
     </StyledPage>
   );
 };

@@ -52,6 +52,16 @@ body{
     -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 728px) {
+    body{
+    height:100%;
+    }
+}
+
+#root{
+    height:100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
