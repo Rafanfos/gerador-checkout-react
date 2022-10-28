@@ -30,8 +30,7 @@ export const StyledCheckout = styled.div`
     padding: 20px;
   }
 
-  button,
-  a {
+  .button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,8 +41,7 @@ export const StyledCheckout = styled.div`
     color: #ffffff;
   }
 
-  button:hover,
-  a:hover {
+  .button:hover {
     scale: 1.2;
     background-color: var(--color-primary-light);
   }

@@ -13,10 +13,7 @@ export const Global = createGlobalStyle`
     --color-grey-1: #868E96;
     --color-grey-2: #121214;
     
-    --toastify-color-success: #3FE864; 
-    --toastify-color-error: #E83F5B;
-    --toastify-icon-color-success: #3FE864;
-    --toastify-icon-color-error: #E83F5B;
+    
 }
 
 
