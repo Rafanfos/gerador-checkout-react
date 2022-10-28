@@ -48,6 +48,7 @@ export const StyleActivity = styled.div`
       flex-direction: column;
       padding: 30px;
       gap: 10px;
+      max-height: 50%;
     }
     li {
       min-height: 100px;
