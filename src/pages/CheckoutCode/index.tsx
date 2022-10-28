@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context";
 import { StyledCheckout } from "./style";
 import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 export const CheckoutCode = () => {
   const { activity } = useContext(Context);
@@ -38,6 +39,7 @@ export const CheckoutCode = () => {
   const copyCode = () => {
     const code = `${text1}\n${text2}\n${text3}`;
     navigator.clipboard.writeText(code);
+    toast.success("Copiado para a área de transferência");
   };
 
   return (
@@ -48,7 +50,7 @@ export const CheckoutCode = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [-100, 0] }}
           exit={{ opacity: 0, y: [0, -100] }}
-          transition={{ ease: "easeOut", duration: 1.5 }}
+          transition={{ ease: "easeOut", duration: 1 }}
         >
           <h1>Código de checkout</h1>
           <div className="codeList">
@@ -62,10 +64,15 @@ export const CheckoutCode = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ ease: "easeOut", duration: 3 }}
+          transition={{ ease: "easeOut", duration: 1 }}
         >
-          <button onClick={copyCode}>Copiar</button>
-          <Link to={"/"}>Voltar</Link>
+          <button className="button" onClick={copyCode}>
+            Copiar
+          </button>
+          <Link to={"/"} className="button">
+            Voltar
+          </Link>
+          
         </motion.div>
       </AnimatePresence>
     </StyledCheckout>

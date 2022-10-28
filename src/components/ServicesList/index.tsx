@@ -2,7 +2,7 @@ import { Context } from "../../context";
 import { StyleActivity } from "./styles";
 import remove from "../../assets/remove.png";
 import { useContext } from "react";
-
+import { toast } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ServicesList = () => {
@@ -10,6 +10,7 @@ const ServicesList = () => {
 
   const removeItem = (itemId: string) => {
     setActivity(activity.filter(({ id }) => id !== itemId));
+    toast.warning("Registro apagado!");
   };
 
   return (
@@ -21,7 +22,7 @@ const ServicesList = () => {
               <motion.li
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, x: [-500, 0] }}
-                transition={{ ease: "easeOut", duration: 3 }}
+                transition={{ ease: "easeOut", duration: 1 }}
                 exit={{ opacity: 0, x: [0, -500] }}
                 id={id}
                 key={id}
