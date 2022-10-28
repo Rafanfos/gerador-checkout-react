@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 export interface IContextData {
@@ -75,6 +76,7 @@ const Providers = ({ children }: IContextProps) => {
   const saveData = (data: IServiceData) => {
     data.id = uuidv4();
     setActivity((oldActivities) => [...oldActivities, data]);
+    toast.success("Atendimento registrado!");
   };
 
   return (
